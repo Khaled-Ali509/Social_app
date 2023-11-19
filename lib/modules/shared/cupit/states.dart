@@ -82,8 +82,12 @@ class SocialReceiveMessageErrorState extends SocialAppState {
 }
 class SocialGetMessageErrorState extends SocialAppState {}
 
+// Them Mood
+class SocialAppCurrentMode extends SocialAppState{}
+class SocialAppChangMode extends SocialAppState{}
 
 
+//LoginStates
 
 abstract class SocialAppLoginState{}
 class SocialAppChangPasswordVisibilityState extends SocialAppLoginState{}
@@ -101,7 +105,7 @@ class SocialAppLoginErrorState extends SocialAppLoginState{
 
 
 
-
+////RegisterStates
 
 abstract class SocialAppRegisterState{}
 class SocialAppChangRPasswordVisibilityState extends SocialAppRegisterState{}

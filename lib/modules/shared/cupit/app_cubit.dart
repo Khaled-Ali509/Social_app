@@ -10,13 +10,16 @@ import 'package:social_app/models/Social_user_model.dart';
 import 'package:social_app/models/message_model.dart';
 import 'package:social_app/modules/chats/chat_Screen.dart';
 import 'package:social_app/modules/feeds/feeds_Screen.dart';
+import 'package:social_app/modules/login_screen/login_screen.dart';
 import 'package:social_app/modules/profile/profile_Screen.dart';
+import 'package:social_app/modules/shared/componants/componants.dart';
 import 'package:social_app/modules/shared/cupit/states.dart';
-import 'package:social_app/modules/shared/styles/colors.dart';
+import 'package:social_app/modules/shared/styles/const.dart';
 import 'package:social_app/modules/users/users_Screen.dart';
 import 'package:firebase_storage/firebase_storage.dart'as firebase_storage ;
 
 import '../../../models/post_model.dart';
+import '../../../network/remot/cash_helper.dart';
 import '../../add_post/new_post.dart';
 
 class SocialAppCubit extends Cubit<SocialAppState>
@@ -471,6 +474,34 @@ void getMyPosts(
   });
 }
 
+//Them Mood ///////////////////////
+  bool isDark = false;
+  void changeMode({bool? fromShared})
+  {
+    if (fromShared !=null)
+    {
+      isDark= fromShared;
+      emit(SocialAppCurrentMode());
+    }else
+    {
+      isDark= !isDark;
+      CacheHelper.saveData(key: 'isDark', value: isDark).then((value)
+      {
+        emit(SocialAppChangMode());
+      });
+    }
+
+  }
+
+
+  void signOut(context)
+  {
+    CacheHelper.removeData(key: 'uId',).then((value){
+      if (value) {
+      navigateFinish(context, Login_Screen());
+      }
+    });
+  }
 }
 
 

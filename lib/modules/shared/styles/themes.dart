@@ -2,7 +2,7 @@
 import 'package:flutter/material.dart';
 import 'package:hexcolor/hexcolor.dart';
 
-import 'colors.dart';
+import 'const.dart';
 
 ThemeData darkThem =
     ThemeData(
@@ -29,13 +29,20 @@ ThemeData darkThem =
         elevation: 20.0,
       ),
       cardColor: Colors.black,
-      textTheme:const TextTheme(
+      drawerTheme: DrawerThemeData(
+        backgroundColor: HexColor('333730'),
+      ),
+      iconTheme:IconThemeData(
+        color: Colors.white,
+      ) ,
+      textTheme: TextTheme(
         bodyLarge: TextStyle(
           fontWeight: FontWeight.bold,
           fontSize:20.0,
           color: Colors.white,
         ),
         bodySmall: TextStyle(
+          color: Colors.white,
           fontSize: 16.0,
           fontWeight: FontWeight.bold,
         ),
@@ -79,8 +86,11 @@ ThemeData(
     elevation: 20.0,
   ),
   cardColor: Colors.white,
+  drawerTheme: DrawerThemeData(
+    backgroundColor: Colors.white,
 
-  textTheme:const TextTheme(
+  ),
+  textTheme: TextTheme(
       bodyLarge: TextStyle(
         fontWeight: FontWeight.bold,
         fontSize:20.0,
@@ -89,6 +99,7 @@ ThemeData(
       bodySmall: TextStyle(
         fontSize: 16.0,
         fontWeight: FontWeight.bold,
+        color: Colors.black,
       ),
       titleLarge:TextStyle(
         color: Colors.black,

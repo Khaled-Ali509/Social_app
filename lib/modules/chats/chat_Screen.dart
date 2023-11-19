@@ -1,8 +1,11 @@
 import 'package:conditional_builder_null_safety/conditional_builder_null_safety.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:social_app/adaptive/adaptive_indicator.dart';
 import 'package:social_app/models/Social_user_model.dart';
+import 'package:social_app/models/message_model.dart';
 import 'package:social_app/modules/shared/componants/componants.dart';
+import 'package:social_app/modules/shared/styles/const.dart';
 
 import '../chat_detailes/chat_detailes_Screen.dart';
 import '../shared/cupit/app_cubit.dart';
@@ -78,42 +81,32 @@ class Chats_Screen extends StatelessWidget {
                       ),
                       padding: const EdgeInsets.all(5.0),
                       child: Row(
-                        children: const [
-                          Icon(Icons.search),
+                        children:  [
+                          Icon(Icons.search,
+                          ),
                           SizedBox(
                             width: 10.0,
                           ),
                           Text(
                             'Search',
-
+                            style: Theme.of(context).textTheme.titleSmall,
                           )
                         ],
                       ),
                     ),
                     const SizedBox(height: 20.0,),
-                    //2.build list
-                    /*SizedBox(
-                  height: 90.0,
-                  child: ListView.separated (
-                    scrollDirection: Axis.horizontal,
-                   //3.add item to list
-                    itemBuilder: (context, index )=>buildStoryItem() ,
-                    separatorBuilder: (context,index)=>const SizedBox( width: 15.0,) ,
-                    itemCount: 15,
-                  ),
-                ),*/
                     ListView.separated(
                       physics:NeverScrollableScrollPhysics(),
                       shrinkWrap: true,
                       scrollDirection:Axis.vertical,
-                      itemBuilder:(context,index)=>buildChatItem(cubit.users[index], context),
+                      itemBuilder:(context,index)=>buildChatItem(cubit.users[index], context,index),
                       separatorBuilder: (context,index)=>const SizedBox( height:15.0,),
                       itemCount: cubit.users.length,
                     ),
                   ],
                 ),
               ),
-              fallback: (context)=>Center(child: CircularProgressIndicator()),
+              fallback: (context)=>Center(child: Adaptive_Indicator(os: getOs())),
           ),
         ),
       );
@@ -121,7 +114,7 @@ class Chats_Screen extends StatelessWidget {
     );
     }
 // build Item
-  Widget buildChatItem(SocialUserModel model , context)=>InkWell(
+  Widget buildChatItem(SocialUserModel model , context , index)=>InkWell(
     onTap: (){
       navigateTo(context, Chat_Details_Screen(userModel: model,));
     },
@@ -156,18 +149,16 @@ class Chats_Screen extends StatelessWidget {
               children:  [
                  Text(
                    model.name,
-                  style: const TextStyle(
-                    fontSize: 16.0,
-                    fontWeight: FontWeight.bold,
-                  ),
+                  style:  Theme.of(context).textTheme.bodySmall,
                   maxLines: 1,
                   overflow: TextOverflow.ellipsis,
                 ),
                 const SizedBox(height: 5.0,),
                 Row(
                   children: [
-                    const Expanded(
-                      child: Text('Hello my name is Khaled Ali HassanKhaled Ali HassanKhaled Ali HassanKhaled',
+                     const Expanded(
+                      child:
+                      Text('Hello',
                         maxLines: 1,
                         overflow: TextOverflow.ellipsis,
                       ),

@@ -7,7 +7,7 @@ import 'package:social_app/modules/login_screen/login_screen.dart';
 import 'package:social_app/modules/shared/componants/componants.dart';
 import 'package:social_app/modules/shared/cupit/app_cubit.dart';
 import 'package:social_app/modules/shared/cupit/states.dart';
-import 'package:social_app/modules/shared/styles/colors.dart';
+import 'package:social_app/modules/shared/styles/const.dart';
 
 import '../../models/post_model.dart';
 
@@ -161,8 +161,6 @@ class Profile_Screen extends StatelessWidget {
                           minimumSize: Size(double.infinity, 35.0),
                         ),
                         onPressed: () {
-                          navigateFinish(context, Login_Screen());
-                          uID= null;
                           },
                         child: Text(
                           'Log Out',

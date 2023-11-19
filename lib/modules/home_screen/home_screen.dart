@@ -8,6 +8,8 @@ import 'package:social_app/modules/shared/componants/componants.dart';
 import 'package:social_app/modules/shared/cupit/app_cubit.dart';
 import 'package:social_app/modules/shared/cupit/states.dart';
 
+import '../drawer/drawer_Screen.dart';
+
 class HomeScreen extends StatelessWidget{
   @override
   Widget build(BuildContext context) {
@@ -42,6 +44,7 @@ class HomeScreen extends StatelessWidget{
 
               ],
             ),
+            drawer: Drawer_Screen(),
             body:home.screens[home.currentIndex],
             bottomNavigationBar: BottomNavigationBar(
               currentIndex: home.currentIndex,
@@ -79,70 +82,3 @@ class HomeScreen extends StatelessWidget{
     );
   }
 }
-
-
-
-/*ConditionalBuilder(
-              condition:home.model !=null ,
-              builder: (BuildContext context) {
-                //var model = home.model;
-                return Column(
-                  children: [
-                    if (!FirebaseAuth.instance.currentUser!.emailVerified)
-                    Container(
-                      padding: EdgeInsets.symmetric(
-                        horizontal:20.0,
-                      ),
-                      color: Colors.amber,
-                      child: Row(
-                        children: [
-                          Icon(
-                            Icons.info_outline,
-                          ),
-                          SizedBox(width: 5.0,),
-                          Expanded(
-                            child: Text(
-                              'Please verify your Email.',
-                              style: TextStyle(
-                                fontWeight: FontWeight.bold,
-                                fontSize: 17.0,
-                                color: Colors.black,
-                              ),
-                            ),
-                          ),
-                          SizedBox(width:15.0),
-
-                          TextButton(
-
-                            onPressed:() {
-                              FirebaseAuth.instance.currentUser
-                                  ?.sendEmailVerification()
-                                  .then((value) {
-                                showToast(
-                                        msg: 'Check Your mail',
-                                        state: ToastState.success);
-                              })
-                                  .catchError((error){
-                                    print(error.toString());
-                                    showToast(
-                                        msg: 'Error',
-                                        state: ToastState.error);
-                              });
-                            },
-                            child:Text(
-                              'Send',
-                              style: TextStyle(
-                                  color: Colors.blue,
-                                  fontSize: 20.0
-                              ),
-
-                            ),
-                          ),
-
-                        ],
-                      ),
-                    )
-                  ],
-                );
-              }, fallback: ( context)=>Center(child: CircularProgressIndicator()),
-            ),*/

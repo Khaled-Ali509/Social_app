@@ -6,7 +6,7 @@ import 'package:social_app/modules/shared/componants/componants.dart';
 import 'package:social_app/modules/shared/cupit/app_cubit.dart';
 import 'package:social_app/modules/shared/cupit/states.dart';
 
-import '../shared/styles/colors.dart';
+import '../shared/styles/const.dart';
 
 class EditProfile_Screen extends StatelessWidget {
    EditProfile_Screen({Key? key}) : super(key: key);
@@ -144,76 +144,9 @@ class EditProfile_Screen extends StatelessWidget {
                             ]
                         ),
                       ),
-                      /*SizedBox(height: 5.0,),
-                      if (cubit.profileImage !=null || cubit.coverImage!=null)
-                        Row(
-
-                        children: [
-                          if (cubit.coverImage !=null)
-                            Expanded(
-                              child: ElevatedButton(
-                                   style: ElevatedButton.styleFrom(
-                                      padding: EdgeInsets.all(8.0),
-                                    backgroundColor: defultColore,
-                                     minimumSize: Size(double.infinity, 40.0),
-                                   ),
-                                 onPressed: (){
-                                     cubit.upLoadCoverImage(
-                                     phone: phoneController.text,
-                                     name: userNameController.text,
-                                       bio: bioController.text,
-                                        );},
-                                    child: Text('Save Cover',
-                                    style: Theme.of(context).textTheme.titleMedium?.copyWith(fontSize: 19.0,color: Colors.white),
-                                    ),
-                              ),
-                            ),
-                           /* Expanded(
-
-                               child: defultBotomn(
-                               context ,
-                                height: 40.0,
-                                onPressed: (){
-                                 cubit.upLoadCoverImage(
-                                     phone: phoneController.text,
-                                     name: userNameController.text,
-                                     bio: bioController.text,
-                                 );
-                                },
-                                text: 'Save Cover',
-                            ),
-                          ),*/
-                          SizedBox(width: 5.0,),
-                          if (cubit.profileImage !=null)
-                            Expanded(
-                            child: ElevatedButton(
-                              style: ElevatedButton.styleFrom(
-                                padding: EdgeInsets.all(8.0),
-                                backgroundColor: defultColore,
-                                minimumSize: Size(double.infinity, 40.0),
-                              ),
-                              onPressed: ()
-                              {
-                                cubit.upLoadProfImage(
-                                phone: phoneController.text,
-                                  name: userNameController.text,
-                                      bio: bioController.text,
-                                    );
-                                            },
-                              child: Text(
-                                'Save Profile',
-                                style:TextStyle(
-                                    fontSize: 19.0,
-                                    color: Colors.white
-                                ),
-
-                              ),
-                            ),
-                          ),
-                        ],
-                      ),*/
                       SizedBox(height: 13.0,),
                       defaultFormField(
+
                           controller: userNameController,
                           type:TextInputType.text ,
                           label: 'User Name',

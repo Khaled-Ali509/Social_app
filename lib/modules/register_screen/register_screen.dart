@@ -2,11 +2,12 @@ import 'package:conditional_builder_null_safety/conditional_builder_null_safety.
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:social_app/modules/login_screen/login_screen.dart';
+import '../../adaptive/adaptive_indicator.dart';
 import '../home_screen/home_screen.dart';
 import '../shared/componants/componants.dart';
 import '../shared/cupit/register_cupit.dart';
 import '../shared/cupit/states.dart';
-import '../shared/styles/colors.dart';
+import '../shared/styles/const.dart';
 
 
 
@@ -26,8 +27,10 @@ class RegisterScreen extends StatelessWidget {
         builder: (context, state) {
           var cubit = SocialAppRegisterCubit.get(context);
           return Scaffold(
+            backgroundColor: Colors.white70,
             appBar: AppBar(
-              title: Text('Social_App'),
+
+              backgroundColor:Colors.grey[500] ,
             ),
             body: Padding(
               padding: EdgeInsets.all(20.0),
@@ -39,11 +42,11 @@ class RegisterScreen extends StatelessWidget {
                       crossAxisAlignment: CrossAxisAlignment.start,
                       children: [
 
-                        Text(
-                          'Register',
+                        const Text(
+                          'Register now to communicat with friends...',
                           style: TextStyle(
                             color: Colors.black,
-                            fontSize: 40.0,
+                            fontSize: 20.0,
                             fontWeight: FontWeight.bold,
                           ),
                         ),
@@ -152,7 +155,7 @@ class RegisterScreen extends StatelessWidget {
                               style: Theme.of(context).textTheme.titleMedium?.copyWith(fontSize: 19.0,color: Colors.white)
                               ),
                                ),
-                         fallback: (context)=>const Center(child: CircularProgressIndicator()),
+                         fallback: (context)=> Center(child: Adaptive_Indicator(os: getOs())),
                         ),
                         SizedBox(height: 10.0,),
                       ],

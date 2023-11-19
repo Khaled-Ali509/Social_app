@@ -4,10 +4,11 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:social_app/modules/shared/cupit/login_cupit.dart';
 import 'package:social_app/modules/shared/cupit/states.dart';
 import 'package:social_app/network/remot/cash_helper.dart';
+import '../../adaptive/adaptive_indicator.dart';
 import '../home_screen/home_screen.dart';
 import '../register_screen/register_screen.dart';
 import '../shared/componants/componants.dart';
-import '../shared/styles/colors.dart';
+import '../shared/styles/const.dart';
 
 
 class Login_Screen extends StatelessWidget{
@@ -39,9 +40,7 @@ class Login_Screen extends StatelessWidget{
           {
             var cubit =SocialAppLoginCubit.get(context);
             return Scaffold(
-              appBar: AppBar(
-                title: Text('Social_App'),
-              ),
+              backgroundColor: Colors.white70,
               body: Padding(
                 padding:  EdgeInsets.all(20.0),
                 child: Center(
@@ -54,10 +53,10 @@ class Login_Screen extends StatelessWidget{
 
                           Text(
                             'Login',
-                            style: TextStyle(
-                              color: Colors.black,
+                            style:TextStyle(
                               fontSize: 40.0,
                               fontWeight: FontWeight.bold,
+                              color: Colors.black,
                             ),
                           ),
                           SizedBox(height: 40.0,),
@@ -134,32 +133,9 @@ class Login_Screen extends StatelessWidget{
                                 'Login',
                               ),
                             ),
-                            fallback: (context)=>const Center(child: CircularProgressIndicator()),
+                            fallback: (context)=> Center(child: Adaptive_Indicator(os: getOs())),
                           ),
-                          /*Container(
-                            height: 50.0,
-                            width: double.infinity,
-                            color: defultColore,
-                            child: MaterialButton(
-                              onPressed:(){
-                                if (formKey.currentState!.validate())
-                                {
-                                  print (passwordController.text);
-                                  print(emailController.text);
 
-                                }
-                              },
-                              child:  Text(
-                                'Login',
-                                style:
-                                TextStyle(
-                                  fontWeight: FontWeight.bold,
-                                  fontSize: 20.0,
-                                  color: Colors.white,
-                                ),
-                              ),
-                            ),
-                          ),*/
                           SizedBox(height: 10.0,),
                           Row(
                             children: [
@@ -178,10 +154,7 @@ class Login_Screen extends StatelessWidget{
                               Text('Don\'t have an account?'),
                               TextButton(
                                 onPressed:() {
-                                  Navigator.push(context, MaterialPageRoute(
-                                      builder: (context)=>RegisterScreen()
-                                  )
-                                  );
+                                  navigateTo(context, RegisterScreen());
                                 },
                                 child:Text('Register Now'),
                               ),

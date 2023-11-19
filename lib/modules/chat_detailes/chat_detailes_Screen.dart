@@ -5,7 +5,7 @@ import 'package:social_app/models/Social_user_model.dart';
 import 'package:social_app/models/message_model.dart';
 import 'package:social_app/modules/shared/cupit/app_cubit.dart';
 import 'package:social_app/modules/shared/cupit/states.dart';
-import 'package:social_app/modules/shared/styles/colors.dart';
+import 'package:social_app/modules/shared/styles/const.dart';
 
 class Chat_Details_Screen extends StatelessWidget {
   SocialUserModel userModel;
